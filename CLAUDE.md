@@ -55,7 +55,7 @@ fresh public clone でも有効な内容に保つこと。 -->
 - ビルド: `pnpm build`
 - 型チェック: `pnpm typecheck`
 - テスト: `pnpm test`
-- secrets-scan 手動実行: `node scripts/secrets-scan.mjs --staged --block`
+- secrets-scan 手動実行: `node scripts/secrets-scan.dual.mjs --native-only --staged`（doxguard 実行アダプタ）
 
 ## AI 作業共通ルール
 
@@ -74,7 +74,7 @@ fresh public clone でも有効な内容に保つこと。 -->
 
 書く瞬間の責務（固有名詞の一般化・fixture は合成データ等）は上記「AI 作業共通ルール」の参照先に従う。このリポジトリ固有の配線は以下:
 
-- scanner: `scripts/secrets-scan.mjs`（手動実行: `node scripts/secrets-scan.mjs --staged --block`）
+- scanner: doxguard と gitleaks（手動実行: `node scripts/secrets-scan.dual.mjs --native-only --staged`）
 - layer 2: `.githooks/pre-commit`（`core.hooksPath = .githooks` で有効化済み。第三者 clone 時は `bash scripts/install-hooks.sh` または `pwsh scripts/install-hooks.ps1`）
 - layer 3: `.github/workflows/secrets-scan.yml`
 - env（full coverage に必要・未設定なら構造 regex のみで継続）: `KB_ROOT` / `FAMILY_ROOT`
